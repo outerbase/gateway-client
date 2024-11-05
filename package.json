@@ -1,0 +1,25 @@
+{
+  "name": "@outerbase/agent",
+  "version": "1.0.3",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node index.ts"
+  },
+  "bin": {
+    "agent": "./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mysql2": "^3.11.3",
+    "typescript": "^5.6.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.12",
+    "ts-node": "^10.9.2"
+  }
+}
