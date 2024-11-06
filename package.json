@@ -1,5 +1,5 @@
 {
-  "name": "@outerbase/agent",
+  "name": "@outerbase/gateway",
   "version": "1.0.3",
   "main": "dist/index.js",
   "scripts": {
@@ -7,7 +7,7 @@
     "start": "ts-node index.ts"
   },
   "bin": {
-    "agent": "./dist/index.js"
+    "gateway": "./dist/index.js"
   },
   "keywords": [],
   "author": "",
