@@ -3,6 +3,9 @@ import { WebSocket } from "ws";
 import net from "net";
 import { PassThrough } from "stream";
 
+const ERROR_CODE_INVALID_SECRET = 4001;
+const ERROR_CODE_ANOTHER_AGENT_CONNECTED = 4002;
+
 function createTunnel(
   tunnelAddress: string,
   tunnelToken: string,
@@ -136,7 +139,17 @@ class BridgeServer {
         }
       });
 
-      this.ws.on("close", this.reconnect.bind(this));
+      this.ws.on("close", (code, message) => {
+        if (code === ERROR_CODE_INVALID_SECRET) {
+          console.log("ERROR: Invalid credential");
+          process.exit(1);
+        } else if (code === ERROR_CODE_ANOTHER_AGENT_CONNECTED) {
+          console.log("ERROR: Another agent is connected");
+          process.exit(1);
+        }
+
+        this.reconnect.bind(this)();
+      });
       this.ws.on("error", () => {});
     } catch {
       this.reconnect();
